@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
+from flask import Flask, render_template, request, redirect, url_for, flash, jsonify # type: ignore
 from models import db, Contact
 from forms import ContactForm
 import os
@@ -44,6 +44,7 @@ def add_contact():
             db.session.rollback()
             flash('Error adding contact. Phone number might be duplicate.', 'error')
     return render_template('add_contact.html', form=form)
+
 
 @app.route('/update/<int:id>', methods=['GET', 'POST'])
 def update_contact(id):
